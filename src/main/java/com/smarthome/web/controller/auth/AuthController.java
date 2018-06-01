@@ -3,11 +3,9 @@ package com.smarthome.web.controller.auth;
 import com.smarthome.commons.annotation.Permission;
 import com.smarthome.commons.result.JsonResult;
 import com.smarthome.service.auth.IAuthService;
-import com.smarthome.service.version.VersionService;
 import com.smarthome.web.controller.version.VersionController;
 import com.smarthome.web.model.in.auth.LoginInModel;
-import com.smarthome.web.model.in.version.VersionCheckInModel;
-import com.smarthome.web.model.out.version.VersionUpdateDTO;
+import com.smarthome.web.model.out.auth.LoginDTO;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
@@ -40,10 +38,10 @@ public class AuthController {
     @ApiOperation(value = "app登录", tags="wushenjun", notes = "app登录")
     @Permission(loginReqired=false)
     @RequestMapping(value = "appLogin/{version}", method = RequestMethod.POST)
-    public JsonResult<VersionUpdateDTO> appLogin(HttpServletRequest request,
-                                                           @ApiParam(value = "版本号：v100", required = true) @PathVariable String version,
-                                                           @ApiParam(value = "app登录", required = true) @RequestBody LoginInModel inModel) {
-        JsonResult<VersionUpdateDTO> jsonResult;
+    public JsonResult<LoginDTO> appLogin(HttpServletRequest request,
+                                         @ApiParam(value = "版本号：v100", required = true) @PathVariable String version,
+                                         @ApiParam(value = "app登录", required = true) @RequestBody LoginInModel inModel) {
+        JsonResult<LoginDTO> jsonResult;
         try {
             switch (version) {
                 case "v100":
